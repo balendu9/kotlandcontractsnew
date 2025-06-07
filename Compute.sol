@@ -13,6 +13,12 @@ contract Compute {
     Users public usercontract;
     Tiles public tilescontract;
 
+    function updateContracts(address _usercontract, address _tilecontract) external {
+        require(msg.sender == admin, "Not authorized");
+        usercontract = Users(_usercontract);
+        tilescontract = Tiles(_tilecontract);
+    }
+
     function updateSeason(uint8 season) external {
         require(msg.sender == admin, "Not authorized");
         currentSeason = season;
@@ -42,7 +48,7 @@ contract Compute {
 
 
     // food => 100
-    function produceFood(address _user) external {
+    function produceFood(address _user, uint8 assetlevel) external {
         require(msg.sender == address(tilescontract), "Not authorized");
         uint256 wheat = usercontract.getUserInventory(_user, 1);
         uint256 corn = usercontract.getUserInventory(_user, 2);
@@ -60,31 +66,34 @@ contract Compute {
         } else if(carrot >= 500) {
             usercontract.updateInventory(_user, 4, 500, false);
         }
-        usercontract.updateInventory(_user, 5, 100, true);
+        uint256 produce = 100 + (assetlevel - 1) * 20;
+        usercontract.updateInventory(_user, 5, produce, true);
     }
 
     // 100 factory products => 200 energy
-    function produceEnergy(address _user) external {
+    function produceEnergy(address _user, uint8 assetlevel) external {
         require(msg.sender == address(tilescontract), "Not authorized");
         uint256 factorygoods = usercontract.getUserInventory(_user, 7);
         require(factorygoods >= 100, "Not enough resources");
         usercontract.updateInventory(_user, 7, 100, false);
-        usercontract.updateInventory(_user, 6, 200, true);
+        uint256 produce = 200 + (assetlevel - 1) * 20;
+        usercontract.updateInventory(_user, 6, produce, true);
     }
 
     //wheat, food = 500, 100 => factory goods = 80
-    function produceBakery(address _user) external {
+    function produceBakery(address _user, uint8 assetlevel) external {
         require(msg.sender == address(tilescontract), "Not authorized");
         uint256 wheat = usercontract.getUserInventory(_user, 1);
         uint256 food = usercontract.getUserInventory(_user, 5);
         require(wheat >= 500 && food >= 100, "Not enough resources");
         usercontract.updateInventory(_user, 1, 500, false);
         usercontract.updateInventory(_user, 5, 100, false);
-        usercontract.updateInventory(_user, 7, 80, true);
+        uint256 produce = 80 + (assetlevel - 1) * 20;
+        usercontract.updateInventory(_user, 7, produce, true);
     }
 
     // corn 200 carrot 200 => factory good = 90
-    function produceJuice(address _user) external {
+    function produceJuice(address _user, uint8 assetlevel) external {
         require(msg.sender == address(tilescontract), "Not authorized");
         uint256 corn = usercontract.getUserInventory(_user, 2);
         uint256 carrot = usercontract.getUserInventory(_user, 4);
@@ -92,17 +101,20 @@ contract Compute {
         require(corn >= 200 && carrot >= 200, "Not enough resources");
         usercontract.updateInventory(_user, 2, 200, false);
         usercontract.updateInventory(_user, 4, 200, false);
-        usercontract.updateInventory(_user, 7, 90, true);
+        uint256 produce = 90 + (assetlevel - 1) * 20;
+        usercontract.updateInventory(_user, 7, produce, true);
     }
 
     // factory goods 200 => energy 100 fertilizer 1000
-    function produceBiofuel(address _user) external {
+    function produceBiofuel(address _user, uint8 assetlevel) external {
         require(msg.sender == address(tilescontract), "Not authorized");
         uint256 factorygoods = usercontract.getUserInventory(_user, 7);
         require(factorygoods >= 200, "Not enough resources");
         usercontract.updateInventory(_user, 7, 200, false);
-        usercontract.updateInventory(_user, 6, 100, true);
-        usercontract.updateInventory(_user, 8, 1000, true);
+        uint256 produce1 = 100 + (assetlevel - 1) * 20;
+        uint256 produce2 = 1000 + (assetlevel - 1) * 20;
+        usercontract.updateInventory(_user, 6, produce1, true);
+        usercontract.updateInventory(_user, 8, produce2, true);
     }
 
 }

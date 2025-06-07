@@ -1,0 +1,627 @@
+tiles.sol : 0xF1D02c015603e4D3947994100C7b3e8c0e7c3332
+
+users.sol : 0xA891A41cB51469806A0956Ef9Ab3d9DDaa41DA87
+
+compute.sol : 0x4daafE06F6Aa8DE5015c15d6C4c65Fb6dcF24d1C
+
+
+tiles abi : 
+[
+	{
+		"inputs": [
+			{
+				"internalType": "uint32",
+				"name": "tileId",
+				"type": "uint32"
+			},
+			{
+				"internalType": "uint8",
+				"name": "factoryType",
+				"type": "uint8"
+			}
+		],
+		"name": "buildFactory",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint32",
+				"name": "tileId",
+				"type": "uint32"
+			}
+		],
+		"name": "buyNewTile",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint32",
+				"name": "tileId",
+				"type": "uint32"
+			}
+		],
+		"name": "claimYield",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint32",
+				"name": "tileId",
+				"type": "uint32"
+			},
+			{
+				"internalType": "uint8",
+				"name": "cropType",
+				"type": "uint8"
+			}
+		],
+		"name": "plantCrop",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_token",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_usercontract",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_computecontract",
+				"type": "address"
+			}
+		],
+		"name": "updateContracts",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint32",
+				"name": "tileId",
+				"type": "uint32"
+			}
+		],
+		"name": "upgradeAsset",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "computecontract",
+		"outputs": [
+			{
+				"internalType": "contract Compute",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "MAX_TILES",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "tileExists",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "token",
+		"outputs": [
+			{
+				"internalType": "contract IERC20",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalTilesUnlocked",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "usercontract",
+		"outputs": [
+			{
+				"internalType": "contract Users",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "userOwnedTilesId",
+		"outputs": [
+			{
+				"internalType": "uint32",
+				"name": "",
+				"type": "uint32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "userTilesData",
+		"outputs": [
+			{
+				"internalType": "uint32",
+				"name": "id",
+				"type": "uint32"
+			},
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "isBeingUsed",
+				"type": "bool"
+			},
+			{
+				"internalType": "bool",
+				"name": "isCrop",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint8",
+				"name": "cropTypeId",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint8",
+				"name": "factoryTypeId",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint8",
+				"name": "assetLevel",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "assetdeploytime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "lastClaimedTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "baseLifetimeDays",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+
+
+
+
+users abi : 
+[
+	{
+		"inputs": [],
+		"name": "computecontract",
+		"outputs": [
+			{
+				"internalType": "contract Compute",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"internalType": "uint8",
+				"name": "resource",
+				"type": "uint8"
+			}
+		],
+		"name": "getUserInventory",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "tilescontract",
+		"outputs": [
+			{
+				"internalType": "contract Tiles",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_tilescontract",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_computecontract",
+				"type": "address"
+			}
+		],
+		"name": "updateContracts",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			},
+			{
+				"internalType": "uint8",
+				"name": "resource",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "increase",
+				"type": "bool"
+			}
+		],
+		"name": "updateInventory",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "users",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "userAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint32",
+				"name": "totalTilesOwned",
+				"type": "uint32"
+			},
+			{
+				"internalType": "uint32",
+				"name": "tilesUnderUse",
+				"type": "uint32"
+			},
+			{
+				"internalType": "uint32",
+				"name": "userExperience",
+				"type": "uint32"
+			},
+			{
+				"internalType": "bool",
+				"name": "exists",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+
+
+compute abi:
+[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "currentSeason",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "cropType",
+				"type": "uint8"
+			}
+		],
+		"name": "plantYieldCalculator",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			},
+			{
+				"internalType": "uint8",
+				"name": "assetlevel",
+				"type": "uint8"
+			}
+		],
+		"name": "produceBakery",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			},
+			{
+				"internalType": "uint8",
+				"name": "assetlevel",
+				"type": "uint8"
+			}
+		],
+		"name": "produceBiofuel",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			},
+			{
+				"internalType": "uint8",
+				"name": "assetlevel",
+				"type": "uint8"
+			}
+		],
+		"name": "produceEnergy",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			},
+			{
+				"internalType": "uint8",
+				"name": "assetlevel",
+				"type": "uint8"
+			}
+		],
+		"name": "produceFood",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			},
+			{
+				"internalType": "uint8",
+				"name": "assetlevel",
+				"type": "uint8"
+			}
+		],
+		"name": "produceJuice",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "tilescontract",
+		"outputs": [
+			{
+				"internalType": "contract Tiles",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_usercontract",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_tilecontract",
+				"type": "address"
+			}
+		],
+		"name": "updateContracts",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "season",
+				"type": "uint8"
+			}
+		],
+		"name": "updateSeason",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "usercontract",
+		"outputs": [
+			{
+				"internalType": "contract Users",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

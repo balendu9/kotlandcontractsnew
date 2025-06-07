@@ -49,6 +49,18 @@ contract Tiles {
     //to store data of tile owned by user
     mapping(address => mapping(uint256 => TileData)) public userTilesData;
 
+
+    constructor(address _token) {
+        admin = msg.sender;
+        token = IERC20(_token);
+    }
+
+    function updateContracts(address _usercontract, address _computecontract) external {
+        require(msg.sender == admin, "Not authorized");
+        usercontract = Users(_usercontract);
+        computecontract = Compute(_computecontract);
+    }
+
     function buyNewTile (uint32 tileId) external {
         require(tileId <= MAX_TILES, "Invalid Tile id");
         require(userTilesData[msg.sender][tileId].owner == address(0), "Tile already owned");
@@ -167,19 +179,21 @@ contract Tiles {
             uint256 energy = usercontract.getUserInventory(msg.sender, 6);
             if(tile.factoryTypeId == 1) {
                 require(energy >= 100, "Not enough resources");
-                computecontract.produceFood(msg.sender);
+                computecontract.produceFood(msg.sender, tile.assetLevel);
             } else if(tile.factoryTypeId == 2) {
-                computecontract.produceEnergy(msg.sender);
+                computecontract.produceEnergy(msg.sender, tile.assetLevel);
             } else if(tile.factoryTypeId == 3) {
-                computecontract.produceBakery(msg.sender);
+                computecontract.produceBakery(msg.sender, tile.assetLevel);
             } else if(tile.factoryTypeId == 4) {
-                computecontract.produceJuice(msg.sender);
+                computecontract.produceJuice(msg.sender, tile.assetLevel);
             } else if(tile.factoryTypeId == 5) {
-                computecontract.produceBiofuel(msg.sender);
+                computecontract.produceBiofuel(msg.sender, tile.assetLevel);
             } else {
                 revert("Invalid Factory type");
             }
         }
     }
+
+
 
 }

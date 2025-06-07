@@ -1,8 +1,8 @@
-tiles.sol : 0xF1D02c015603e4D3947994100C7b3e8c0e7c3332
+tiles.sol : 0xdE90ae24F14E31C98f0Df091B3b8Cdf7F2E8a1A1
 
-users.sol : 0xA891A41cB51469806A0956Ef9Ab3d9DDaa41DA87
+users.sol : 0xd968F28d86A7976763c102325bB0E9b586390F59
 
-compute.sol : 0x4daafE06F6Aa8DE5015c15d6C4c65Fb6dcF24d1C
+compute.sol : 0x897CE01A1Aac464D40Ba9859DaCda3542Ce8BB39
 
 
 tiles abi : 
@@ -302,6 +302,11 @@ users abi :
 [
 	{
 		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
 		"name": "computecontract",
 		"outputs": [
 			{
@@ -436,7 +441,6 @@ users abi :
 		"type": "function"
 	}
 ]
-
 
 compute abi:
 [

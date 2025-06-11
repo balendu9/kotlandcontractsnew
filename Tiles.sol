@@ -196,4 +196,35 @@ contract Tiles {
 
 
 
+
+    // ===============================
+    //    Tile Data Getters
+    // ===============================
+
+    function doesTileExist(uint32 tileId, address _user) external view returns(bool){
+        return tileExists[_user][tileId];
+    }
+
+    function getTilesData(uint32 tileId, address _user) external view returns(
+        uint32 id, address owner, bool isBeingUsed, bool isCrop, uint8 cropTypeId,
+        uint8 factoryTypeId, uint8 assetLevel, uint256 assetdeploytime, 
+        uint256 lastClaimedTime, uint256 baseLifetimeDays
+    ) {
+        require(tileExists[_user][tileId], "No tile data found");
+        TileData storage tile = userTilesData[_user][tileId];
+
+        return (
+            tile.id,
+            tile.owner,
+            tile.isBeingUsed,
+            tile.isCrop,
+            tile.cropTypeId,
+            tile.factoryTypeId,
+            tile.assetLevel,
+            tile.assetdeploytime,
+            tile.lastClaimedTime,
+            tile.baseLifetimeDays
+        );
+    }
+
 }
